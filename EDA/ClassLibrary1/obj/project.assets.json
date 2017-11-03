@@ -3711,11 +3711,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\José Angel Riveaux\\Documents\\Visual Studio 2017\\Projects\\ClassLibrary1\\ClassLibrary1\\EDA.csproj",
+      "projectUniqueName": "C:\\Users\\José Angel Riveaux\\Documents\\GitHub\\EDA\\EDA\\ClassLibrary1\\EDA.csproj",
       "projectName": "EDA",
-      "projectPath": "C:\\Users\\José Angel Riveaux\\Documents\\Visual Studio 2017\\Projects\\ClassLibrary1\\ClassLibrary1\\EDA.csproj",
+      "projectPath": "C:\\Users\\José Angel Riveaux\\Documents\\GitHub\\EDA\\EDA\\ClassLibrary1\\EDA.csproj",
       "packagesPath": "C:\\Users\\José Angel Riveaux\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\José Angel Riveaux\\Documents\\Visual Studio 2017\\Projects\\ClassLibrary1\\ClassLibrary1\\obj\\",
+      "outputPath": "C:\\Users\\José Angel Riveaux\\Documents\\GitHub\\EDA\\EDA\\ClassLibrary1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\José Angel Riveaux\\AppData\\Roaming\\NuGet\\NuGet.Config",
