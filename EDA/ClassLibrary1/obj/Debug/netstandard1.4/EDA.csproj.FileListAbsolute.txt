@@ -1,0 +1,7 @@
+C:\Users\José Angel Riveaux\Documents\Visual Studio 2017\Projects\ClassLibrary1\ClassLibrary1\bin\Debug\netstandard1.4\EDA.deps.json
+C:\Users\José Angel Riveaux\Documents\Visual Studio 2017\Projects\ClassLibrary1\ClassLibrary1\bin\Debug\netstandard1.4\EDA.dll
+C:\Users\José Angel Riveaux\Documents\Visual Studio 2017\Projects\ClassLibrary1\ClassLibrary1\bin\Debug\netstandard1.4\EDA.pdb
+C:\Users\José Angel Riveaux\Documents\Visual Studio 2017\Projects\ClassLibrary1\ClassLibrary1\obj\Debug\netstandard1.4\EDA.csproj.CoreCompileInputs.cache
+C:\Users\José Angel Riveaux\Documents\Visual Studio 2017\Projects\ClassLibrary1\ClassLibrary1\obj\Debug\netstandard1.4\EDA.AssemblyInfo.cs
+C:\Users\José Angel Riveaux\Documents\Visual Studio 2017\Projects\ClassLibrary1\ClassLibrary1\obj\Debug\netstandard1.4\EDA.dll
+C:\Users\José Angel Riveaux\Documents\Visual Studio 2017\Projects\ClassLibrary1\ClassLibrary1\obj\Debug\netstandard1.4\EDA.pdb
