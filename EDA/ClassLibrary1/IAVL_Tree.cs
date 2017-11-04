@@ -4,9 +4,9 @@ using System.Text;
 
 namespace EDA
 {
-    public interface IAVL_Tree<T,S>: ICollection<KeyValuePair<T,S>>
+    public interface IAVL_Tree<T,S>: ICollection<KeyValuePair<T,IList<S>>>
     {
         void InsertElement(T key, S value);
-        S this[T index] { get; set; }
+        IList<S> this[T index] { get; }
     }
 }
