@@ -1,0 +1,13 @@
+C:\Users\jange\Desktop\EDA\EDA\Trafego\bin\Debug\netcoreapp2.0\Trafego.deps.json
+C:\Users\jange\Desktop\EDA\EDA\Trafego\bin\Debug\netcoreapp2.0\Trafego.runtimeconfig.json
+C:\Users\jange\Desktop\EDA\EDA\Trafego\bin\Debug\netcoreapp2.0\Trafego.runtimeconfig.dev.json
+C:\Users\jange\Desktop\EDA\EDA\Trafego\bin\Debug\netcoreapp2.0\Trafego.dll
+C:\Users\jange\Desktop\EDA\EDA\Trafego\bin\Debug\netcoreapp2.0\Trafego.pdb
+C:\Users\jange\Desktop\EDA\EDA\Trafego\bin\Debug\netcoreapp2.0\EDA.dll
+C:\Users\jange\Desktop\EDA\EDA\Trafego\bin\Debug\netcoreapp2.0\EDA.pdb
+C:\Users\jange\Desktop\EDA\EDA\Trafego\obj\Debug\netcoreapp2.0\Trafego.csprojResolveAssemblyReference.cache
+C:\Users\jange\Desktop\EDA\EDA\Trafego\obj\Debug\netcoreapp2.0\Trafego.csproj.CoreCompileInputs.cache
+C:\Users\jange\Desktop\EDA\EDA\Trafego\obj\Debug\netcoreapp2.0\Trafego.AssemblyInfoInputs.cache
+C:\Users\jange\Desktop\EDA\EDA\Trafego\obj\Debug\netcoreapp2.0\Trafego.AssemblyInfo.cs
+C:\Users\jange\Desktop\EDA\EDA\Trafego\obj\Debug\netcoreapp2.0\Trafego.dll
+C:\Users\jange\Desktop\EDA\EDA\Trafego\obj\Debug\netcoreapp2.0\Trafego.pdb

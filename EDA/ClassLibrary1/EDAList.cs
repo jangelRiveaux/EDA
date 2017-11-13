@@ -8,13 +8,17 @@ namespace EDA
     public class EDAList<T> : IList<T>, IEnumerator<T>
     {
         int count;
-        ListNode<T> first;
-        ListNode<T> last;
+        internal ListNode<T> first;
+        internal  ListNode<T> last;
         ListNode<T> current;
 
         public EDAList()
         {
             count = 0;
+            current = null;
+            first = null;
+            last = null;
+            this.Reset();
         }
         
         public T this[int index] {
@@ -56,6 +60,8 @@ namespace EDA
                 last = temp;
             }
             count++;
+
+            this.Reset();
         }
 
         public void Clear()
@@ -66,11 +72,11 @@ namespace EDA
 
         public virtual bool Contains(T item)
         {
-            ListNode<T> current = first;
-            while (current != null)
+            ListNode<T> current_n = first;
+            while (current_n != null)
             {
-                if (current.Value.Equals(item)) return true;
-                current = current.Next;
+                if (current_n.Value.Equals(item)) return true;
+                current_n = current_n.Next;
             }
             return false;
         }
@@ -81,12 +87,12 @@ namespace EDA
                 throw new ArgumentNullException("the array can not be null");
             if (arrayIndex < 0 || array.Length - arrayIndex < count)
                 throw new ArgumentOutOfRangeException("The index can not be less than 0");
-            ListNode<T> current = first;
-            while(current != null)
+            ListNode<T> current_n = first;
+            while(current_n != null)
             {
-                array[arrayIndex] = current.Value;
+                array[arrayIndex] = current_n.Value;
                 arrayIndex++;
-                current = current.Next;
+                current_n = current_n.Next;
             }
 
         }
@@ -103,19 +109,19 @@ namespace EDA
         public virtual int IndexOf(T item)
         {
             int index = 0;
-            ListNode<T> current = first;
-            while (current != null)
+            ListNode<T> current_n = first;
+            while (current_n != null)
             {
-                if (current.Value.Equals(item)) return index;
+                if (current_n.Value.Equals(item)) return index;
                 index++;
-                current = current.Next;
+                current_n = current_n.Next;
             }
             return -1;
         }
 
         public virtual void Insert(int index, T item)
         {
-            if (index >= count || index < 0)
+            if (index > count || index < 0)
             {
                 string format_string = string.Format("%d and %d", 0, count - 1);
                 throw new ArgumentOutOfRangeException("the index most be between " + format_string);
@@ -126,12 +132,18 @@ namespace EDA
             {
                 newNode.Next = first;
                 first = newNode;
+                if (last == null)
+                {
+                    last = first;
+                }
             }
             else {
                 ListNode<T> previus = GetNode(index - 1);
                 newNode.Next = previus.Next;
                 previus.Next = newNode;
             }
+            count++;
+            this.Reset();
         }
 
         public bool MoveNext()
@@ -152,22 +164,22 @@ namespace EDA
 
         public virtual bool Remove(T item)
         {
-            ListNode<T> current = first;
+            ListNode<T> current_n = first;
             ListNode<T> before = null;
-            while (current != null)
+            while (current_n != null)
             {
-                if (current.Value.Equals(item))
+                if (current_n.Value.Equals(item))
                 {
                     if (before != null)
-                        before.Next = current.Next;
+                        before.Next = current_n.Next;
                     else
                     {
-                        first = current.Next;
+                        first = current_n.Next;
                     }
                     return true;
                 }
-                before = current;
-                current = current.Next;
+                before = current_n;
+                current_n = current_n.Next;
             }
             return false;
         }
@@ -179,8 +191,11 @@ namespace EDA
                 string format_string = string.Format("%d and %d", 0, count - 1);
                 throw new ArgumentOutOfRangeException("the index most be between " + format_string);
             }
-            
-            if (index == 0)
+            if (first == last)
+            {
+                first = last = null;
+            }
+            else if (index == 0)
             {
                 first = first.Next;
             }
@@ -189,6 +204,7 @@ namespace EDA
                 ListNode<T> previus = GetNode(index - 1);
                 previus.Next = previus.Next.Next;
             }
+            count--;
         }
 
         public void Reset()
@@ -203,12 +219,12 @@ namespace EDA
 
         private ListNode<T> GetNode(int index)
         {
-            ListNode<T> current = first;
+            ListNode<T> current_n = first;
             for (int i = 0; i < index; i++)
             {
-                current = current.Next;
+                current_n = current_n.Next;
             }
-            return current;
+            return current_n;
         }
     }
 

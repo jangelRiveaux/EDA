@@ -13,3 +13,12 @@ C:\Users\José Angel Riveaux\Documents\GitHub\EDA\EDA\ClassLibrary1\obj\Debug\ne
 C:\Users\José Angel Riveaux\Documents\GitHub\EDA\EDA\ClassLibrary1\obj\Debug\netstandard1.4\EDA.AssemblyInfo.cs
 C:\Users\José Angel Riveaux\Documents\GitHub\EDA\EDA\ClassLibrary1\obj\Debug\netstandard1.4\EDA.dll
 C:\Users\José Angel Riveaux\Documents\GitHub\EDA\EDA\ClassLibrary1\obj\Debug\netstandard1.4\EDA.pdb
+C:\Users\jange\Desktop\EDA\EDA\ClassLibrary1\bin\Debug\netstandard1.4\EDA.deps.json
+C:\Users\jange\Desktop\EDA\EDA\ClassLibrary1\bin\Debug\netstandard1.4\EDA.dll
+C:\Users\jange\Desktop\EDA\EDA\ClassLibrary1\bin\Debug\netstandard1.4\EDA.pdb
+C:\Users\jange\Desktop\EDA\EDA\ClassLibrary1\obj\Debug\netstandard1.4\EDA.csprojResolveAssemblyReference.cache
+C:\Users\jange\Desktop\EDA\EDA\ClassLibrary1\obj\Debug\netstandard1.4\EDA.csproj.CoreCompileInputs.cache
+C:\Users\jange\Desktop\EDA\EDA\ClassLibrary1\obj\Debug\netstandard1.4\EDA.AssemblyInfoInputs.cache
+C:\Users\jange\Desktop\EDA\EDA\ClassLibrary1\obj\Debug\netstandard1.4\EDA.AssemblyInfo.cs
+C:\Users\jange\Desktop\EDA\EDA\ClassLibrary1\obj\Debug\netstandard1.4\EDA.dll
+C:\Users\jange\Desktop\EDA\EDA\ClassLibrary1\obj\Debug\netstandard1.4\EDA.pdb

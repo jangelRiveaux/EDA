@@ -3703,7 +3703,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\José Angel Riveaux\\.nuget\\packages\\": {}
+    "C:\\Users\\jange\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -3711,14 +3712,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\José Angel Riveaux\\Documents\\GitHub\\EDA\\EDA\\ClassLibrary1\\EDA.csproj",
+      "projectUniqueName": "C:\\Users\\jange\\Desktop\\EDA\\EDA\\ClassLibrary1\\EDA.csproj",
       "projectName": "EDA",
-      "projectPath": "C:\\Users\\José Angel Riveaux\\Documents\\GitHub\\EDA\\EDA\\ClassLibrary1\\EDA.csproj",
-      "packagesPath": "C:\\Users\\José Angel Riveaux\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\José Angel Riveaux\\Documents\\GitHub\\EDA\\EDA\\ClassLibrary1\\obj\\",
+      "projectPath": "C:\\Users\\jange\\Desktop\\EDA\\EDA\\ClassLibrary1\\EDA.csproj",
+      "packagesPath": "C:\\Users\\jange\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jange\\Desktop\\EDA\\EDA\\ClassLibrary1\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\José Angel Riveaux\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jange\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3732,6 +3736,11 @@
         "netstandard1.4": {
           "projectReferences": {}
         }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
       }
     },
     "frameworks": {

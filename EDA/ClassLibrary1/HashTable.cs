@@ -1,95 +1,139 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace EDA
 {
-    public class HashTable<T,S> : IHashTable<T,S> where T : IComparable
+    public class HashTable<T,S> : IHashTable<T,S> , IEnumerable<Tuple<T,S>>, IEnumerator<Tuple<T, S>>
     {
-		private LinkedList<Tuple<T, S>>[] _items;
+		private IList<Tuple<T, S>>[] _items;
         private int _fillFactor = 3;
         private int _size;
+        int current__arr_pos, current_lst_pos;
+
+        public Tuple<T, S> Current => _items[current__arr_pos][current_lst_pos];
+
+        object IEnumerator.Current => throw new NotImplementedException();
+
+        public S this[T index]
+        {
+            get { return Get(index).Item2; }
+            set {
+                var pos = GetPosition(index);
+                for (int i = 0; i < _items[pos].Count; i++)
+                {
+                    if (_items[pos][i].Item1.Equals(index))
+                    {
+                        _items[pos][i] = new Tuple<T, S>(index, value);
+                        return;
+                    }
+                }
+                throw new KeyNotFoundException("chave nao encontrada");
+            }
+        }
 
         public HashTable()
         {
-            _items = new LinkedList<Tuple<T, S>>[];
+            _size = 0;
+            _items = new EDAList<Tuple<T, S>>[_fillFactor];
+            current_lst_pos =current__arr_pos = -1;
         }
 
 		public void Add(T key, S value)
         {
-            var pos = GetPosition(key, _items.Length);
+            var pos = GetPosition(key);
             if (_items[pos] == null)
             {
-                _items[pos] = new LinkedList<Tuple<T, S>>();
+                _items[pos] = new EDAList<Tuple<T, S>>();
             }
             if (_items[pos].Any(x=>x.Item1.Equals(key)))
             {
                 throw new Exception("Chave duplicada, não pode ser inserida.");
             }
             _size++;
-
-            if (inserir())
+            if (Inserir())
             {
                 InserindoHash();
             }
-            pos = GetPosition(key, _items.Length);
+
+            pos = GetPosition(key);
             if (_items[pos] == null)
             {
-                _items[pos] = new LinkedList<Tuple<T, TU>>();
+                _items[pos] = new EDAList<Tuple<T, S>>();
             }
-            _items[pos].AddFirst(new Tuple<T, TU>(key, value));
+            _items[pos].Insert(0,new Tuple<T, S>(key, value));
         }
 
         public void Remove(T key)
         {
-            var pos = GetPosition(key, _items.Length);
+            var pos = GetPosition(key);
             if (_items[pos] != null)
             {
                 var objToRemove = _items[pos].FirstOrDefault(item => item.Item1.Equals(key));
-                if (objToRemove == null) return;
+                if (objToRemove == null) throw new KeyNotFoundException("O valor não exite.");
                 _items[pos].Remove(objToRemove);
                 _size--;
             }
             else
             {
-                throw new Exception("O valor não exite.");
+                throw new KeyNotFoundException("O valor não exite.");
             }
         }
 
-        public S Get(T key)
+        private Tuple<T, S> Get(T key)
         {
-            var pos = GetPosition(key, _items.Length);
-            foreach (var item in _items[pos].Where(item => item.Item1.Equals(key)))
+            var pos = GetPosition(key);
+            if (_items[pos] == null) throw new KeyNotFoundException("Chave não existe.");
+            ((EDAList<Tuple<T, S>>)_items[pos]).Reset();
+            foreach (var item in _items[pos])
             {
-                return item.Item2;
+                return item;
             }
-            throw new Exception("Chave não existe.");
+            throw new KeyNotFoundException("Chave não existe.");
+        }
+
+        public bool Contain(T key)
+        {
+            var pos = GetPosition(key);
+            if (_items[pos] == null) return false;
+            ((EDAList<Tuple<T, S>>)_items[pos]).Reset();
+            foreach (var item in _items[pos])
+            {
+                if(item.Item1.Equals(key))
+                    return true;
+            }
+            return false;
         }
 
         private void InserindoHash()
         {
             _fillFactor *= 2;
-            var newItems = new LinkedList<Tuple<T, S>>[_items.Length * 2];
-            foreach (var item in _items.Where(x=>x != null))
+            var newItems = new EDAList<Tuple<T, S>>[_fillFactor];
+            foreach (var item in _items)
             {
-                foreach (var value in item)
+                if (item != null)
                 {
-                    var pos = GetPosition(value.Item1, newItems.Length);
-                    if (newItems[pos] == null)
+                    ((EDAList<Tuple<T, S>>)item).Reset();
+                    foreach (var value in item)
                     {
-                        newItems[pos] = new LinkedList<Tuple<T, S>>();
+                        var pos = GetPosition(value.Item1);
+                        if (newItems[pos] == null)
+                        {
+                            newItems[pos] = new EDAList<Tuple<T, S>>();
+                        }
+                        newItems[pos].Insert(0, new Tuple<T, S>(value.Item1, value.Item2));
                     }
-                    newItems[pos].AddFirst(new Tuple<T, S>(value.Item1, value.Item2));
                 }
             }
             _items = newItems;
         }
 
-        private int GetPosition(T key, int length)
+        private int GetPosition(T key)
         {
-            var hash = key.GetHashCode();
-            var pos = Math.Abs(hash % length);
+            var hash = Math.Abs(key.GetHashCode());
+            var pos = hash % _fillFactor;
             return pos;
         }
 
@@ -97,61 +141,62 @@ namespace EDA
         {
             return _size >= _fillFactor;
         }
-    }
 
-	//-----------------------------------------------------------------Anne--------------------------------------------
-		static hashtable GetHashtable()
-		{
-			
-				Hashtable hashtable = new Hashtable();
-				for(int i = 0; i < this.IList<S>.count; i++ ){
-					hashtable.Add(IList<S>[i]);
-
-				}
-								
-				return hashtable;
+        public void Push(T key, S value)
+        {
+            Add(key,value);
         }
 
-		int count;
-        Node<T,S> root;
-
-        public IList<S> this[T index]
+        public void Delete(T key)
         {
-		get
+            Remove(key);
+        }
+
+        public IEnumerator<Tuple<T, S>> GetEnumerator()
+        {
+            return this;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this;
+        }
+
+        public bool MoveNext()
+        {
+            if (current__arr_pos < _items.Length)
             {
-                Node<T, S> current = GetNode(index);
-                if (index < this.IList<S>.count)
-				   return this.IList<S>[index];
-				else
-					throw new IndexOutOfRangeException("O índice está fora dos limites.");
+                if (current__arr_pos == -1)
+                {
+                    current__arr_pos = 0;
+                    current_lst_pos = -1;
+                }
+                if (_items[current__arr_pos] != null && _items[current__arr_pos].Count - 1 > current_lst_pos)
+                {
+                    current_lst_pos++;
+                    return true;
+                }
+                else
+                {
+                    int i = current__arr_pos+1;
+                    for (;i < _items.Length && (_items[i] == null || _items[i].Count == 0); i++) ;
+                    if (i >= _items.Length) return false;
+                    current__arr_pos = i;
+                    current_lst_pos = 0;
+                    return true;                    
+                }
+            }
+            return false;
         }
 
-        set
+        public void Reset()
         {
-            this.IList<S>[index] = value;
+            current_lst_pos = current__arr_pos = -1;
         }
 
-		public void Push(KeyValuePair<T, IList<S>> item)
-		{
-			//criar uma pilha
-			Stack <hashtable> pilha = new Stack <hashtable>();
-			for(int i = 0; i < this.IList<S>.count; i++ ){
-					foreach (IList<S>[i] in hashtable)
-					{
-					pilha.push(IList<S>[i]);
-					}
-			}
-            
+        public void Dispose()
+        {            
         }
-
-		// 
-		public void Delete(IList<S>[index])
-		{
-			if(hashtable.ContainsKey(IList<S>[index]))
-				hashtable.Remove(IList<S>[index]);
-			else
-				throw new IndexOutOfRangeException("Chave inexistente.");
-		}
-		 
+    } 
 }
    

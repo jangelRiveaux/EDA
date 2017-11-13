@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.0",
+    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.0": {
+      "Trafego/1.0.0": {
+        "dependencies": {
+          "EDA": "1.0.0"
+        },
+        "runtime": {
+          "Trafego.dll": {}
+        }
+      },
+      "EDA/1.0.0": {
+        "runtime": {
+          "EDA.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Trafego/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EDA/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
